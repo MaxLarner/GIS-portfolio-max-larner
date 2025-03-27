@@ -1,0 +1,23 @@
+project:
+  type: website
+
+website:
+  title: "gis-portfolio-max-larner"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: assignment1.qmd
+        text: Project 1 ':' Shortest Border
+      - about.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+
+

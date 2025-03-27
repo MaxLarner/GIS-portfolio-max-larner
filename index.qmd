@@ -1,0 +1,28 @@
+---
+title: "Max Larner – GIS Portfolio"
+format: html
+---
+
+# Welcome
+
+This portfolio showcases two geospatial data science projects completed during my final year GIS module at the University of Manchester. Each project was developed using **Python**, **GeoPandas**, and open-source tools to solve real-world spatial problems through custom algorithms and visual outputs.
+
+My goal was to build efficient, replicable workflows that reflect both geospatial thinking and technical writing. This site is designed to demonstrate those skills to future employers.
+
+---
+
+## Projects
+
+### [World's Shortest Border Algorithm](assignment1.qmd)
+Identify the shortest shared land border between any two countries using spatial indexing and geodesic geometry. This project highlights algorithm design, working with GeoPandas objects, and code structure.
+
+### [Second Project – Coming Soon]('assignment2.qmd')
+Placeholder for my second GIS project, which involves [“currently being prepared”].
+
+---
+
+## About Me
+
+I'm a final-year geography student with strong interests in spatial data science, conservation biology, and sustainable development. My academic work focuses on Python-based GIS, GIS informed conservation management, and applying technical skills to real-world environmental challenges.
+
+You can view my code on [GitHub](https://github.com/MaxLarner/gis-portfolio-max-larner) or contact me via [LinkedIn](https://linkedin.com/in/max-larner-b53610208) and max.larner123@gmail.com.
