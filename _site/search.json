@@ -1,80 +1,94 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "assignment2/assignment2.html",
+    "href": "assignment2/assignment2.html",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
     "section": "",
-    "text": "About this site"
+    "text": "This project implements and extends Jonny Huck’s (2015) spatial weighted redistribution algorithm to resolve the false hotspot problem in spatially ambiguous data. Specifically, it reallocates geocoded Twitter data about the Royal Wedding across Greater Manchester to visualise likely tweet origin based on population density. I then evaluated the extent to which this output informs marketing insights for different advertising approaches.\nPassively geocoded tweets are collapsed into a single centroid of the local administrative boundary, creating misleading hotspots. This project reimplements a weighted redistribution algorithm to diffuse those points across each admin area, informed by a weighting layer of population density to show the likelyhood of their origin.\nThis project achieved an 82 in a third year GIS module."
   },
   {
-    "objectID": "assignment1.html#project-overview",
-    "href": "assignment1.html#project-overview",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "Project Overview",
-    "text": "Project Overview\nThis project aimed to identify the shortest international border in the world using Python and GeoPandas, with a strong emphasis on algorithm efficiency and spatial reasoning. The task involved writing a custom script to:\n\nDetect shared borders between countries\nMeasure their geodesic length\nProduce a high-quality map of the shortest result"
+    "objectID": "assignment2/assignment2.html#project-overview",
+    "href": "assignment2/assignment2.html#project-overview",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "",
+    "text": "This project implements and extends Jonny Huck’s (2015) spatial weighted redistribution algorithm to resolve the false hotspot problem in spatially ambiguous data. Specifically, it reallocates geocoded Twitter data about the Royal Wedding across Greater Manchester to visualise likely tweet origin based on population density. I then evaluated the extent to which this output informs marketing insights for different advertising approaches.\nPassively geocoded tweets are collapsed into a single centroid of the local administrative boundary, creating misleading hotspots. This project reimplements a weighted redistribution algorithm to diffuse those points across each admin area, informed by a weighting layer of population density to show the likelyhood of their origin.\nThis project achieved an 82 in a third year GIS module."
   },
   {
-    "objectID": "assignment1.html#the-challenge",
-    "href": "assignment1.html#the-challenge",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "The Challenge",
-    "text": "The Challenge\nUsing a shapefile of country borders, write an efficient algorithm that detects and maps the shortest international border in the world.\nKey constraints included:\n\nEfficient comparison of all country pairs\nAccurate distance measurement (in metres)\nClear cartographic output"
+    "objectID": "assignment2/assignment2.html#motivation-and-relevance",
+    "href": "assignment2/assignment2.html#motivation-and-relevance",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Motivation and Relevance",
+    "text": "Motivation and Relevance\nThe challenge was to implement an algorithm that addressed spatial ambiguity and generalisation — both common issues in real-world data, particularly in advertising, urban planning, or emergency services. These distortions are often overlooked in spatial analysis workflows.\nIn tackling this, I explored:\n\nHow to translate methodological ambiguity into a computational workflow\nEfficient geospatial processing using raster manipulation, vector masking, and spatial indexing\nHow the Modifiable Areal Unit Problem (MAUP) introduces limitations when polygons used for redistribution differ in resolution and shape from the original geocoded data"
   },
   {
-    "objectID": "assignment1.html#my-approach",
-    "href": "assignment1.html#my-approach",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "My Approach",
-    "text": "My Approach\n\nLoad world country geometries using GeoPandas\n\nBuild an R-tree to spatially index all countries by bounding box\n\nFor each country (A), retrieve spatially close neighbours (B)\n\nSkip self- and reverse comparisons\n\nCheck for a true shared border using .intersection()\n\nIf a shared border exists:\n\nMeasure its geodesic length using PyProj’s Geod\n\nTrack the shortest one found\n\n\nRender a UTM-projected map of the result using Matplotlib\n\nEach function (such as find_shortest_border, check_border, and calculate_length) was modular, documented, and designed to handle edge cases, including enclaves and missing geometries."
+    "objectID": "assignment2/assignment2.html#key-skills-and-design-decisions",
+    "href": "assignment2/assignment2.html#key-skills-and-design-decisions",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Key Skills and Design Decisions",
+    "text": "Key Skills and Design Decisions\n\nSpatial Indexing: I leveraged GeoPandas’ sindex with R-trees to filter points in logarithmic time, using within() checks to confirm geometry containment.\nEfficient Geometry Filtering: Random seeds were batch-generated within bounding boxes and validated in vectorised NumPy operations to avoid redundant loops.\nRaster Updates via Disk Buffers: Used skimage.draw.disk() to localise Euclidean decay calculations, avoiding computationally expensive full-raster iteration.\nError Robustness: Try-except blocks catch out-of-bounds errors without crashing execution — essential for robust raster processing.\nVisualisation Optimisation: The core plotting function was modularised to support both standalone and multi-panel outputs, with intelligent title, scale bar, and legend rendering."
   },
   {
-    "objectID": "assignment1.html#key-techniques-and-decisions",
-    "href": "assignment1.html#key-techniques-and-decisions",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "Key Techniques and Decisions",
-    "text": "Key Techniques and Decisions\nR-tree Spatial Indexing\nUsed to reduce the number of geometry comparisons by limiting checks to spatially proximate countries. This greatly increased performance by reducing unnecessary calculations.\nGeodesic Measurement\nApplied WGS84 geodesic calculations using PyProj’s Geod class for realistic, curvature-aware border length measurement without needing frequent reprojections.\nCRS Handling\nDistance calculations were performed in WGS84, while the final map was reprojected to a dynamic UTM zone estimated from the border location to ensure spatial accuracy in rendering.\nMap Design\nThe map included the two countries, their shared border, a legend, north arrow, and scalebar. A buffer limited surrounding features, focusing attention on the result."
+    "objectID": "assignment2/assignment2.html#figure-1-false-hotspots-from-spatially-ambiguous-point-data",
+    "href": "assignment2/assignment2.html#figure-1-false-hotspots-from-spatially-ambiguous-point-data",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Figure 1: False Hotspots from Spatially Ambiguous Point Data",
+    "text": "Figure 1: False Hotspots from Spatially Ambiguous Point Data"
   },
   {
-    "objectID": "assignment1.html#output-map",
-    "href": "assignment1.html#output-map",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "Output Map",
-    "text": "Output Map\n\n\n\nShortest border map\n\n\nMap of the shortest international border (Italy–Vatican City), reprojected using UTM for accurate local visualisation."
+    "objectID": "assignment2/assignment2.html#figure-2-spatial-redistribution-output",
+    "href": "assignment2/assignment2.html#figure-2-spatial-redistribution-output",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Figure 2: Spatial Redistribution Output",
+    "text": "Figure 2: Spatial Redistribution Output\n\nThe standalone output map visualises how point data is diffused in proportion to the population weighting surface. It includes all key cartographic elements such as scalebar, legend, north arrow, and transparency masking."
   },
   {
-    "objectID": "assignment1.html#reflections",
-    "href": "assignment1.html#reflections",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "Reflections",
-    "text": "Reflections\nThe use of R-tree indexing was critical to improving efficiency, reducing the number of geometry comparisons required.\nGeodesic calculations offered globally accurate results without introducing heavy computational overhead.\nHandling of geometry types and careful use of projections ensured both analytical robustness and visual clarity.\nWhile the dataset’s resolution limited exact precision, the algorithm produced replicable and spatially defensible results."
+    "objectID": "assignment2/assignment2.html#figure-3-12-panel-dynamic-sensitivity-analysis",
+    "href": "assignment2/assignment2.html#figure-3-12-panel-dynamic-sensitivity-analysis",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Figure 3: 12-Panel Dynamic Sensitivity Analysis",
+    "text": "Figure 3: 12-Panel Dynamic Sensitivity Analysis\n\nThe 12-panel figure was created dynamically to visualise how the algorithm responds to changes in the s parameter (spatial ambiguity) and W (number of seed samples). As expected:\n\nLower s values lead to tight clusters suitable for fine-resolution targeting (e.g., billboards)\n\nHigher s values broaden distributions — ideal for coarse targeting like regional radio\n\nLarger W values favour areas with high weighting (dense populations), while low W introduces greater stochastic spread"
   },
   {
-    "objectID": "assignment1.html#resources",
-    "href": "assignment1.html#resources",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "Resources",
-    "text": "Resources\n\nFull write-up (PDF)\n\nPython source code on GitHub"
+    "objectID": "assignment2/assignment2.html#challenges-overcome",
+    "href": "assignment2/assignment2.html#challenges-overcome",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Challenges Overcome",
+    "text": "Challenges Overcome\n\nMAUP and Scale Discrepancy: The tweet data’s Level 3 admin areas didn’t perfectly align with the shapefile used, leading to mismatches between labelled and redistributed zones. This revealed critical spatial assumptions often buried in generalisation pipelines.\nVisualising Uncertainty: Rather than claim precision, the algorithm visualises likelihood, making the outputs more suitable for qualitative inference.\nEfficiency: Runtime was kept fast enough to allow multiple model runs with varied parameters. This was key for producing the 12-panel visual without rewriting the mapping function or bloating memory."
   },
   {
-    "objectID": "assignment1.html#skills-demonstrated",
-    "href": "assignment1.html#skills-demonstrated",
-    "title": "World’s Shortest Border Algorithm",
-    "section": "Skills Demonstrated",
-    "text": "Skills Demonstrated\n\nPython algorithm design\n\nSpatial indexing and performance tuning\n\nGeodesic geometry analysis\n\nCartographic visualisation\n\nRobust and modular programming in a GIS context"
+    "objectID": "assignment2/assignment2.html#runtime-reproducibility",
+    "href": "assignment2/assignment2.html#runtime-reproducibility",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Runtime & Reproducibility",
+    "text": "Runtime & Reproducibility\n\nCode executes in under 10 seconds, depending on configuration\nAll visual outputs are reproducible using a single-line call to the main algorithm and visualise_results() function\nOptional seeding enables reproducibility for formal reporting and submission"
+  },
+  {
+    "objectID": "assignment2/assignment2.html#resources",
+    "href": "assignment2/assignment2.html#resources",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Resources:",
+    "text": "Resources:\n\nFull write-up (PDF)\n\nview the Python source code directly.\n\nTo generate maps:\n\nAll core functionality is embedded in a single Python script. See the accompanying README for setup instructions and parameter configuration examples.\n\nStandalone Map: Run the code with your preferred s and W parameters. Results are visualised directly.\n12-Panel Comparison: Use the provided function visualise_multiple_distributions() to produce a matrix of results across a specified range of s and W values."
+  },
+  {
+    "objectID": "assignment2/assignment2.html#final-reflection",
+    "href": "assignment2/assignment2.html#final-reflection",
+    "title": "Weighted Redistribution: Resolving Spatial Ambiguity with GIS",
+    "section": "Final Reflection",
+    "text": "Final Reflection\nThis project demonstrates a solid understanding of spatial data uncertainty, Python-based geospatial workflows, and efficient algorithm design. I invested time in optimising for usability, flexibility, and clarity — skills that directly transfer into real-world GIS roles."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Max Larner – GIS Portfolio",
     "section": "",
-    "text": "This portfolio showcases two geospatial data science projects completed during my final year GIS module at the University of Manchester. Each project was developed using Python, GeoPandas, and open-source tools to solve real-world spatial problems through custom algorithms and visual outputs.\nMy goal was to build efficient, replicable workflows that reflect both geospatial thinking and technical writing. This site is designed to demonstrate those skills to future employers.\n\n\n\n\n\nIdentify the shortest shared land border between any two countries using spatial indexing and geodesic geometry. This project highlights algorithm design, working with GeoPandas objects, and code structure.\n\n\n\nPlaceholder for my second GIS project, which involves [“currently being prepared”].\n\n\n\n\n\nI’m a final-year geography student with strong interests in spatial data science, conservation biology, and sustainable development. My academic work focuses on Python-based GIS, GIS informed conservation management, and applying technical skills to real-world environmental challenges.\nYou can view my code on GitHub or contact me via LinkedIn and max.larner123@gmail.com."
+    "text": "This portfolio showcases two geospatial data science projects completed during my final year GIS module at the University of Manchester. Each project was developed using Python, GeoPandas, and open-source tools to solve real-world spatial problems through custom algorithms and visual outputs.\nMy goal was to build efficient, replicable workflows that reflect both geospatial thinking and technical writing. This site is designed to demonstrate those skills to future employers.\n\n\n\n\n\nIdentify the shortest shared land border between any two countries using spatial indexing and geodesic geometry. This project highlights algorithm design, working with GeoPandas objects, and code structure.\n\n\n\nAn implementation of Jonny Huck’s (2014) Spatial Redistribution Algorithm, using a weighting layer to redistribute spatially ambigious point data.\n\n\n\n\n\nI’m a final-year geography student with strong interests in spatial data science, conservation biology, and sustainable development. My academic work focuses on Python-based GIS, GIS informed conservation management, and applying technical skills to real-world environmental challenges.\nYou can view my code on GitHub or contact me via LinkedIn and max.larner123@gmail.com."
   },
   {
     "objectID": "index.html#projects",
     "href": "index.html#projects",
     "title": "Max Larner – GIS Portfolio",
     "section": "",
-    "text": "Identify the shortest shared land border between any two countries using spatial indexing and geodesic geometry. This project highlights algorithm design, working with GeoPandas objects, and code structure.\n\n\n\nPlaceholder for my second GIS project, which involves [“currently being prepared”]."
+    "text": "Identify the shortest shared land border between any two countries using spatial indexing and geodesic geometry. This project highlights algorithm design, working with GeoPandas objects, and code structure.\n\n\n\nAn implementation of Jonny Huck’s (2014) Spatial Redistribution Algorithm, using a weighting layer to redistribute spatially ambigious point data."
   },
   {
     "objectID": "index.html#about-me",
@@ -82,5 +96,68 @@
     "title": "Max Larner – GIS Portfolio",
     "section": "",
     "text": "I’m a final-year geography student with strong interests in spatial data science, conservation biology, and sustainable development. My academic work focuses on Python-based GIS, GIS informed conservation management, and applying technical skills to real-world environmental challenges.\nYou can view my code on GitHub or contact me via LinkedIn and max.larner123@gmail.com."
+  },
+  {
+    "objectID": "assignment1/assignment1.html#project-overview",
+    "href": "assignment1/assignment1.html#project-overview",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "Project Overview",
+    "text": "Project Overview\nThis project aimed to identify the shortest international border in the world using Python and GeoPandas, with a strong emphasis on algorithm efficiency and spatial reasoning. The task involved writing a custom script to:\n\nDetect shared borders between countries\nMeasure their geodesic length\nProduce a high-quality map of the shortest result\n\nThis project achieved an 83 in a third year GIS module."
+  },
+  {
+    "objectID": "assignment1/assignment1.html#the-challenge",
+    "href": "assignment1/assignment1.html#the-challenge",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "The Challenge",
+    "text": "The Challenge\nUsing a shapefile of country borders, write an efficient algorithm that detects and maps the shortest international border in the world.\nKey constraints included:\n\nEfficient comparison of all country pairs\nAccurate distance measurement (in metres)\nClear cartographic output"
+  },
+  {
+    "objectID": "assignment1/assignment1.html#my-approach",
+    "href": "assignment1/assignment1.html#my-approach",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "My Approach",
+    "text": "My Approach\n\nLoad world country geometries using GeoPandas\n\nBuild an R-tree to spatially index all countries by bounding box\n\nFor each country (A), retrieve spatially close neighbours (B)\n\nSkip self- and reverse comparisons\n\nCheck for a true shared border using .intersection()\n\nIf a shared border exists:\n\nMeasure its geodesic length using PyProj’s Geod\n\nTrack the shortest one found\n\n\nRender a UTM-projected map of the result using Matplotlib\n\nEach function (such as find_shortest_border, check_border, and calculate_length) was modular, documented, and designed to handle edge cases, including enclaves and missing geometries."
+  },
+  {
+    "objectID": "assignment1/assignment1.html#key-techniques-and-decisions",
+    "href": "assignment1/assignment1.html#key-techniques-and-decisions",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "Key Techniques and Decisions",
+    "text": "Key Techniques and Decisions\nR-tree Spatial Indexing\nUsed to reduce the number of geometry comparisons by limiting checks to spatially proximate countries. This greatly increased performance by reducing unnecessary calculations.\nGeodesic Measurement\nApplied WGS84 geodesic calculations using PyProj’s Geod class for realistic, curvature-aware border length measurement without needing frequent reprojections.\nCRS Handling\nDistance calculations were performed in WGS84, while the final map was reprojected to a dynamic UTM zone estimated from the border location to ensure spatial accuracy in rendering.\nMap Design\nThe map included the two countries, their shared border, a legend, north arrow, and scalebar. A buffer limited surrounding features, focusing attention on the result."
+  },
+  {
+    "objectID": "assignment1/assignment1.html#output-map",
+    "href": "assignment1/assignment1.html#output-map",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "Output Map",
+    "text": "Output Map\n\n\n\nShortest border map\n\n\nMap of the shortest international border (Italy–Vatican City), reprojected using UTM for accurate local visualisation."
+  },
+  {
+    "objectID": "assignment1/assignment1.html#reflections",
+    "href": "assignment1/assignment1.html#reflections",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "Reflections",
+    "text": "Reflections\nThe use of R-tree indexing was critical to improving efficiency, reducing the number of geometry comparisons required.\nGeodesic calculations offered globally accurate results without introducing heavy computational overhead.\nHandling of geometry types and careful use of projections ensured both analytical robustness and visual clarity.\nWhile the dataset’s resolution limited exact precision, the algorithm produced replicable and spatially defensible results."
+  },
+  {
+    "objectID": "assignment1/assignment1.html#resources",
+    "href": "assignment1/assignment1.html#resources",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "Resources",
+    "text": "Resources\n\nFull write-up (PDF)\n\nPython source code on GitHub"
+  },
+  {
+    "objectID": "assignment1/assignment1.html#skills-demonstrated",
+    "href": "assignment1/assignment1.html#skills-demonstrated",
+    "title": "World’s Shortest Border Algorithm",
+    "section": "Skills Demonstrated",
+    "text": "Skills Demonstrated\n\nPython algorithm design\n\nSpatial indexing and performance tuning\n\nGeodesic geometry analysis\n\nCartographic visualisation\n\nRobust and modular programming in a GIS context"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   }
 ]

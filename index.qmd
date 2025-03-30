@@ -13,11 +13,11 @@ My goal was to build efficient, replicable workflows that reflect both geospatia
 
 ## Projects
 
-### [World's Shortest Border Algorithm](assignment1.qmd)
+### [World's Shortest Border Algorithm](assignment1/assignment1.qmd)
 Identify the shortest shared land border between any two countries using spatial indexing and geodesic geometry. This project highlights algorithm design, working with GeoPandas objects, and code structure.
 
-### [Second Project – Coming Soon]('assignment2.qmd')
-Placeholder for my second GIS project, which involves [“currently being prepared”].
+### [Jonny Huck's Spatial Redistribution](assignment2/assignment2.qmd)
+An implementation of Jonny Huck's (2014) Spatial Redistribution Algorithm, using a weighting layer to redistribute spatially ambigious point data.
 
 ---
 
